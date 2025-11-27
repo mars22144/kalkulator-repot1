@@ -12,35 +12,26 @@ def menu():
 
 # function untuk operasinya
 def operasi(pilihan, angka1, angka2):
-    # tambah
     if pilihan == "1":
         hasil = angka1 + angka2
         operasistr = f"{angka1} + {angka2} = {hasil}"
-    # kurang
     elif pilihan == "2":
         hasil = angka1 - angka2
         operasistr = f"{angka1} - {angka2} = {hasil}"
-    # bagi
     elif pilihan == "3":
-        # jika angka2 bukan 0 maka akan jalan ini
         if angka2 != 0:
             hasil = angka1 / angka2
             operasistr = f"{angka1} : {angka2} = {hasil}"
-    # sisa bagi
     elif pilihan == "4":
-        # jika angka2 bukan 0 maka akan jalan ini
         if angka2 != 0:
             hasil = angka1 % angka2
             operasistr = f"{angka1} % {angka2} = {hasil}" 
-    # kali
     elif pilihan == "5":
         hasil = angka1 * angka2
         operasistr = f"{angka1} x {angka2} = {hasil}"
-    # pangkat
     elif pilihan == "6":
         hasil = angka1 ** angka2
         operasistr = f"{angka1} ^ {angka2} = {hasil}"
-    # jika user memasukkan pilihan yang tidak ada
     else:
         return "Pilihan tidak ada", None
     
@@ -62,21 +53,17 @@ def kalkulator():
     history_operasi = []
     # looping pemilihan menu
     while True:
-        # memanggil function menu
         menu()
         pilihan = input("Pilih menu(1-8): ")
     
-        # jika user memasukkan angka 8 maka akan keluar dari looping
         if pilihan == "8":
             print("Anda keluar")
             break
-        # history
+        
         elif pilihan == "7":
             show_history(history_operasi)
-            continue # kembali ke loop yang awal(tampilan menu)
-        # menu 1 - 6
+            continue 
         elif pilihan in ("1", "2", "3", "4", "5", "6"):
-            # looping untuk angka1(jika user memasukkan type data string)
             while True:
                 iptangka1 = input("Masukkan angka pertama: ")
                 try:
@@ -84,9 +71,8 @@ def kalkulator():
                     break
                 except ValueError:
                     print("HANYA ANGKA!")
-                    continue # kembali ke loop masukkan angka1 jika inputan bukan angka
+                    continue
             
-            # looping untuk angka2(jika user memasukan 0 di angka2) 
             while True:
                 iptangka2 = input("Masukkan angka kedua: ")
                 try:
@@ -98,12 +84,11 @@ def kalkulator():
                     break
                 except ValueError:
                     print("PASTIKAN HANYA ANGKA!")
-                    continue # kembali ke loop masukkan angka2 jika inputan bukan angka
+                    continue
             
             # perhitungan
             operasistr, hasil = operasi(pilihan, angka1, angka2)
             
-            # ketika hasil tidak sama dengan None maka akan tampil ini
             if hasil != None:
                 print(f"Hasilnya: {operasistr}")
                 # simpan kedalam list(history_operasi)
