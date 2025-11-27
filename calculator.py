@@ -1,3 +1,5 @@
+from math import*
+
 # function tampilan menu
 def menu():
     print("=" * 10 + "Kalkulator" + "=" * 10)
